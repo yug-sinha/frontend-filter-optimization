@@ -11,7 +11,7 @@ export const App: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/dataset_small.csv")
+    fetch("/dataset_large.csv")
       .then(r => r.text())
       .then(csv => setData(parseCSV(csv)));
   }, []);
