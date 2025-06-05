@@ -1,35 +1,31 @@
 import React, { createContext, useContext, useState, useMemo } from "react";
 import type { DataRow, Filters, FilterContextType } from "../types";
 
-
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export const FilterProvider: React.FC<{ data: DataRow[]; children: React.ReactNode }> = ({ data, children }) => {
   const [filters, setFilters] = useState<Filters>({});
 
-  // Apply all filters to get filtered data
+  // ✅ Memoized filtered data
   const filteredData = useMemo(() => {
     return data.filter(row =>
       Object.entries(filters).every(([col, selected]) =>
-        !selected || selected.length === 0 || selected.includes(row[col])
+        !selected?.length || selected.includes(row[col])
       )
     );
   }, [data, filters]);
 
-  // Recalculate dropdown options for each column
+  // ✅ Memoized dropdown options
   const dropdownOptions = useMemo(() => {
     const options: Record<string, (string | number)[]> = {};
     const columns = Object.keys(data[0] || {});
     columns.forEach(col => {
-      // Apply all filters except this one
-      const otherFilters = Object.fromEntries(Object.entries(filters).filter(([k]) => k !== col));
-      const subData = data.filter(row =>
-        Object.entries(otherFilters).every(([otherCol, sel]) =>
-          !sel || sel.length === 0 || sel.includes(row[otherCol])
+      const filteredForThis = data.filter(row =>
+        Object.entries(filters).every(([otherCol, selected]) =>
+          col === otherCol || !selected?.length || selected.includes(row[otherCol])
         )
       );
-      // Unique values for this column in the filtered data
-      options[col] = Array.from(new Set(subData.map(row => row[col])));
+      options[col] = Array.from(new Set(filteredForThis.map(row => row[col])));
     });
     return options;
   }, [data, filters]);

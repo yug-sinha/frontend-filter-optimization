@@ -1,18 +1,17 @@
-import React from "react";
+import React, { SyntheticEvent, useDeferredValue } from "react";
 import { Autocomplete, Checkbox, TextField } from "@mui/material";
-import type { SyntheticEvent } from "react";
 import { useFilterContext } from "../context/FilterContext";
 
 type Props = { column: string };
 
-export const FilterDropdown: React.FC<Props> = ({ column }) => {
+const _FilterDropdown: React.FC<Props> = ({ column }) => {
   const { filters, setFilters, dropdownOptions } = useFilterContext();
   const options = dropdownOptions[column] || [];
 
-  const handleChange = (
-    _: SyntheticEvent,
-    values: (string | number)[]
-  ) => {
+  // ✅ Use deferred value for smoother rendering
+  const deferredOptions = useDeferredValue(options);
+
+  const handleChange = (_: SyntheticEvent, values: (string | number)[]) => {
     setFilters(prev => ({ ...prev, [column]: values }));
   };
 
@@ -20,24 +19,21 @@ export const FilterDropdown: React.FC<Props> = ({ column }) => {
     <Autocomplete
       multiple
       disableCloseOnSelect
-      options={options}
+      options={deferredOptions}
       value={filters[column] || []}
       onChange={handleChange}
       getOptionLabel={(option) => String(option)}
       renderOption={(props, option, { selected }) => (
-        <li {...props} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Checkbox checked={selected} style={{ padding: "0 8px 0 0" }} />
-            {option}
-          </div>
+        <li {...props}>
+          <Checkbox checked={selected} style={{ marginRight: 8 }} />
+          {option}
         </li>
       )}
       renderInput={(params) => (
         <TextField
           {...params}
-          variant="outlined"
           label={column}
-          placeholder="Type to search"
+          placeholder="Search..."
           size="small"
         />
       )}
@@ -45,3 +41,6 @@ export const FilterDropdown: React.FC<Props> = ({ column }) => {
     />
   );
 };
+
+// ✅ Wrap in React.memo to skip unnecessary re-renders
+export const FilterDropdown = React.memo(_FilterDropdown);
