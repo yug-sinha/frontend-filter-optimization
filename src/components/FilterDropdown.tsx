@@ -5,7 +5,6 @@ import {
   Autocomplete,
   Checkbox,
   TextField,
-  useAutocomplete
 } from "@mui/material";
 import { VariableSizeList } from "react-window";
 import { useFilterContext } from "../context/FilterContext";
