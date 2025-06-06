@@ -1,54 +1,151 @@
-# React + TypeScript + Vite
+Here’s a clean and complete `README.md` file tailored for your **frontend-filter-optimization** project. It documents setup, features, and deployment instructions—ideal for sharing or open-sourcing.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+### 📄 `README.md`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+````markdown
+# 📊 Frontend Filter Optimization
 
-## Expanding the ESLint configuration
+A high-performance React + TypeScript dashboard that supports advanced filtering and rendering of large datasets (50k+ rows) using Material UI and `react-window`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- ⚡ Fast filter dropdowns with virtualization
+- 📑 Multi-select + search filters for each column
+- 📋 Data table with:
+  - Pagination (100 rows per page)
+  - Vertical scroll (20 visible rows)
+  - Row numbering
+- 🌐 Responsive and clean UI (light theme)
+- 🧠 Optimized for large datasets
+- ✅ Deployed on Vercel
+
+## 🧰 Tech Stack
+
+- [Vite](https://vitejs.dev/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI (MUI)](https://mui.com/)
+- [react-window](https://react-window.vercel.app/)
+- Context API for filter state management
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/yug-sinha/frontend-filter-optimization.git
+cd frontend-filter-optimization
+````
+
+### 2. Install Dependencies
+
+Ensure Node.js v20+ is installed. Then run:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Run Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Visit `http://localhost:5173` in your browser.
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+## ▶️ Preview Production Build
+
+```bash
+npm run preview
+```
+
+---
+
+## ☁️ Deploy on Vercel
+
+This project is optimized for Vercel deployment.
+
+### Notes:
+
+* All test files (`*.test.tsx`) must be excluded or removed.
+* Ensure types for optional dependencies are installed:
+
+```bash
+npm install --save-dev @types/react-window
+```
+
+---
+
+## 🗂️ Folder Structure
+
+```
+frontend-filter-optimization/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── DataTable.tsx
+│   │   └── FilterDropdown.tsx
+│   ├── context/
+│   │   └── FilterContext.tsx
+│   ├── data/
+│   │   └── dataset.csv
+│   ├── types.ts
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── tsconfig.json
+├── vite.config.ts
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚠️ Common Issues
+
+### 🔹 `Cannot find module 'react-window'`
+
+```bash
+npm install react-window
+npm install --save-dev @types/react-window
+```
+
+### 🔹 Test build errors on Vercel
+
+* Ensure test files are removed or excluded in `tsconfig.json`.
+
+```json
+"exclude": ["**/*.test.tsx", "**/*.test.ts"]
+```
+
+---
+
+## 👨‍💻 Author
+
+**Yug Sinha**
+GitHub: [@yug-sinha](https://github.com/yug-sinha)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+```
+
+---
+
+Let me know if you want to add badges (e.g., Vercel, GitHub actions) or documentation for CSV file format.
 ```
