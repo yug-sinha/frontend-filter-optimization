@@ -1,5 +1,6 @@
 // FilterDropdown.tsx
-import React, { SyntheticEvent, useDeferredValue, forwardRef } from "react";
+import React, { useDeferredValue, forwardRef } from "react";
+import type { SyntheticEvent } from "react";
 import {
   Autocomplete,
   Checkbox,
