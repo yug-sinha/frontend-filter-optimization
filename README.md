@@ -105,25 +105,6 @@ frontend-filter-optimization/
 
 ---
 
-## ⚠️ Common Issues
-
-### 🔹 `Cannot find module 'react-window'`
-
-```bash
-npm install react-window
-npm install --save-dev @types/react-window
-```
-
-### 🔹 Test build errors on Vercel
-
-* Ensure test files are removed or excluded in `tsconfig.json`.
-
-```json
-"exclude": ["**/*.test.tsx", "**/*.test.ts"]
-```
-
----
-
 ## 👨‍💻 Author
 
 **Yug Sinha**
