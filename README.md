@@ -1,4 +1,3 @@
-````markdown
 # 📊 Frontend Filter Optimization
 
 A high-performance React + TypeScript dashboard that supports advanced filtering and rendering of large datasets (50k+ rows) using Material UI and `react-window`.
@@ -24,7 +23,6 @@ A high-performance React + TypeScript dashboard that supports advanced filtering
 - [react-window](https://react-window.vercel.app/)
 - Context API for filter state management
 
----
 
 ## 🚀 Getting Started
 
