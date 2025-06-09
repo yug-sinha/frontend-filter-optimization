@@ -1,9 +1,3 @@
-Here’s a clean and complete `README.md` file tailored for your **frontend-filter-optimization** project. It documents setup, features, and deployment instructions—ideal for sharing or open-sourcing.
-
----
-
-### 📄 `README.md`
-
 ````markdown
 # 📊 Frontend Filter Optimization
 
