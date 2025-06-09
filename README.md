@@ -115,10 +115,3 @@ GitHub: [@yug-sinha](https://github.com/yug-sinha)
 ## 📄 License
 
 This project is licensed under the MIT License.
-
-```
-
----
-
-Let me know if you want to add badges (e.g., Vercel, GitHub actions) or documentation for CSV file format.
-```
